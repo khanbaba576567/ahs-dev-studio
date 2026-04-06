@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ali Hassan Shafaqat — Developer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,wght@0,700;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ===========================
+   RESET & BASE
+=========================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #080808;
+      --s1: #101010;
+      --s2: #161616;
+      --border: #222222;
+      --accent: #d4f04c;
+      --teal: #4cf0c8;
+      --text: #eeebe4;
+      --muted: #555;
+      --mono: 'DM Mono', monospace;
+      --display: 'Syne', sans-serif;
+      --serif: 'Fraunces', serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ===========================
+   NAV
+=========================== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 24px;
+      background: rgba(8, 8, 8, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ===========================
+   HERO  (mobile-first = column)
+=========================== */
+    .hero {
+      padding: 108px 24px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(212, 240, 76, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 240, 76, 0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle, rgba(212, 240, 76, 0.07) 0%, transparent 70%);
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(212, 240, 76, 0.07);
+      border: 1px solid rgba(212, 240, 76, 0.2);
+      padding: 6px 14px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 0.3;
+        transform: scale(0.6)
+      }
+    }
+
+    .hero-name {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(42px, 13vw, 80px);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      animation: fadeUp 0.7s 0.08s ease both;
+    }
+
+    .hero-name .outline {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(238, 235, 228, 0.2);
+    }
+
+    .hero-role {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(17px, 5vw, 26px);
+      color: var(--muted);
+      margin: 20px 0 24px;
+      animation: fadeUp 0.7s 0.16s ease both;
+    }
+
+    .hero-role em {
+      color: var(--teal);
+      font-style: normal;
+    }
+
+    .hero-desc {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.9;
+      margin-bottom: 36px;
+      animation: fadeUp 0.7s 0.24s ease both;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      animation: fadeUp 0.7s 0.32s ease both;
+    }
+
+    .btn {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 13px 26px;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-fill {
+      background: var(--accent);
+      color: #080808;
+      border: 2px solid var(--accent);
+    }
+
+    .btn-fill:hover {
+      background: #e0f55e;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 2px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Terminal */
+    .terminal-wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    .terminal {
+      background: #0c0c0c;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .t-bar {
+      background: #181818;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .t-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .t-dot.r {
+      background: #ff5f57
+    }
+
+    .t-dot.y {
+      background: #febc2e
+    }
+
+    .t-dot.g {
+      background: #28c840
+    }
+
+    .t-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-left: 6px;
+    }
+
+    .t-body {
+      padding: 20px;
+      font-size: 12px;
+      line-height: 2.1;
+    }
+
+    .t-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .prompt {
+      color: var(--accent);
+    }
+
+    .cmd {
+      color: #ccc;
+    }
+
+    .out {
+      padding-left: 18px;
+      color: #555;
+    }
+
+    .k {
+      color: var(--teal);
+    }
+
+    .v {
+      color: var(--accent);
+    }
+
+    .s {
+      color: #f0c84a;
+    }
+
+    .cursor-blink {
+      display: inline-block;
+      width: 8px;
+      height: 13px;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+    }
+
+    /* ===========================
+   TICKER
+=========================== */
+    .ticker-wrap {
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--s1);
+      padding: 14px 0;
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 40px;
+      width: max-content;
+      animation: ticker 24s linear infinite;
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
+
+    .ti {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .ti.hi {
+      color: var(--accent);
+    }
+
+    .sep {
+      color: #333;
+    }
+
+    /* ===========================
+   SECTIONS
+=========================== */
+    .section {
+      padding: 72px 24px;
+    }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .lbl {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .lbl::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .heading {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(28px, 8vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===========================
+   STATS
+=========================== */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 64px;
+    }
+
+    .stat-box {
+      background: var(--s1);
+      padding: 28px 16px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 38px;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-lbl {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ===========================
+   SERVICES  (always stacked)
+=========================== */
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .svc-card {
+      background: var(--s1);
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .svc-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transition: transform 0.3s;
+      transform-origin: bottom;
+    }
+
+    .svc-card:hover {
+      background: var(--s2);
+    }
+
+    .svc-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .svc-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .svc-icon {
+      font-size: 28px;
+    }
+
+    .svc-num {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+
+    .svc-name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .svc-desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.85;
+    }
+
+    .svc-price {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* ===========================
+   PROJECTS  (flex column — NO grid, NO span)
+=========================== */
+    .projects-list {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .proj-card {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      padding: 26px 22px;
+      transition: border-color 0.25s, transform 0.25s;
+      width: 100%;
+    }
+
+    .proj-card:hover {
+      border-color: rgba(212, 240, 76, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .proj-card.featured {
+      border-color: rgba(212, 240, 76, 0.18);
+    }
+
+    .proj-badge {
+      display: inline-block;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(212, 240, 76, 0.07);
+      border: 1px solid rgba(212, 240, 76, 0.18);
+      padding: 4px 10px;
+      margin-bottom: 16px;
+    }
+
+    .proj-name {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .proj-desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--s2);
+    }
+
+    .tag.hi {
+      color: var(--teal);
+      border-color: rgba(76, 240, 200, 0.2);
+      background: rgba(76, 240, 200, 0.04);
+    }
+
+    /* ===========================
+   STACK
+=========================== */
+    .stack-bg {
+      background: var(--s1);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .stack-item {
+      background: var(--s2);
+      padding: 20px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+
+    .stack-item:hover {
+      background: #1c1c1c;
+    }
+
+    .s-emoji {
+      font-size: 20px;
+    }
+
+    .s-name {
+      font-size: 12px;
+      color: #aaa;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===========================
+   CONTACT
+=========================== */
+    .contact-bg {
+      background: var(--accent);
+      padding: 72px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-bg::after {
+      content: 'HIRE';
+      position: absolute;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: min(45vw, 240px);
+      color: rgba(0, 0, 0, 0.06);
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .contact-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-title {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(32px, 11vw, 60px);
+      color: #080808;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .contact-sub {
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.45);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .c-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 14px 20px;
+      color: #080808;
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+
+    .c-link:hover {
+      background: rgba(0, 0, 0, 0.16);
+      transform: translateX(4px);
+    }
+
+    .c-arrow {
+      font-size: 18px;
+    }
+
+    /* ===========================
+   FOOTER
+=========================== */
+    footer {
+      padding: 26px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    /* ===========================
+   ANIMATIONS
+=========================== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===========================
+   DESKTOP  (min 768px)
+=========================== */
+    @media (min-width: 768px) {
+      nav {
+        padding: 22px 48px;
+      }
+
+      .hero {
+        flex-direction: row;
+        align-items: center;
+        padding: 120px 48px 80px;
+        gap: 60px;
+        min-height: 100vh;
+      }
+
+      .hero-copy {
+        flex: 1;
+      }
+
+      .terminal-wrap {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .section {
+        padding: 96px 48px;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .stack-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .contact-bg {
+        padding: 96px 48px;
+      }
+
+      footer {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 30px 48px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">AHS.DEV.STUDIO</div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#projects">Work</a>
+      <a href="#stack">Stack</a>
+      <a href="#contact">Hire Me</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="avail-badge">
+        <div class="dot"></div>Available for hire
+      </div>
+      <h1 class="hero-name">
+        Ali Hassan
+        <span class="outline">Shafaqat</span>
+      </h1>
+      <p class="hero-role">Android &amp; <em>Web</em> Developer</p>
+      <p class="hero-desc">
+        I build polished Android apps and web platforms for startups worldwide.
+        Clean code, real results — delivered fast.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-fill">Hire Me</a>
+        <a href="#projects" class="btn btn-ghost">View Work</a>
+      </div>
+    </div>
+
+    <div class="terminal-wrap">
+      <div class="terminal">
+        <div class="t-bar">
+          <div class="t-dot r"></div>
+          <div class="t-dot y"></div>
+          <div class="t-dot g"></div>
+          <span class="t-label">ali@dev ~ portfolio</span>
+        </div>
+        <div class="t-body">
+          <div class="t-row"><span class="prompt">$</span><span class="cmd"> cat developer.json</span></div>
+          <div class="out">{</div>
+          <div class="out"><span class="k">"name"</span>: <span class="s">"Ali Hassan Shafaqat"</span>,</div>
+          <div class="out"><span class="k">"role"</span>: <span class="s">"Android + Web Dev"</span>,</div>
+          <div class="out"><span class="k">"exp"</span>: <span class="v">"2+ years"</span>,</div>
+          <div class="out"><span class="k">"location"</span>: <span class="s">"Pakistan 🇵🇰"</span>,</div>
+          <div class="out"><span class="k">"available"</span>: <span class="v">true</span>,</div>
+          <div class="out"><span class="k">"stack"</span>: [<span class="s">"Java"</span>, <span
+              class="s">"Kotlin"</span>, <span class="s">"Firebase"</span>]</div>
+          <div class="out">}</div>
+          <div class="t-row" style="margin-top:6px"><span class="prompt">$</span><span class="cursor-blink"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track">
+      <span class="ti hi">Android Dev</span><span class="sep">◆</span>
+      <span class="ti">Java</span><span class="sep">◆</span>
+      <span class="ti">Kotlin</span><span class="sep">◆</span>
+      <span class="ti hi">Firebase</span><span class="sep">◆</span>
+      <span class="ti">Node.js</span><span class="sep">◆</span>
+      <span class="ti">REST APIs</span><span class="sep">◆</span>
+      <span class="ti hi">Jetpack Compose</span><span class="sep">◆</span>
+      <span class="ti">HTML / CSS</span><span class="sep">◆</span>
+      <span class="ti">JavaScript</span><span class="sep">◆</span>
+      <span class="ti hi">Web Apps</span><span class="sep">◆</span>
+      <span class="ti">GitHub</span><span class="sep">◆</span>
+      <!-- dupe for loop -->
+      <span class="ti hi">Android Dev</span><span class="sep">◆</span>
+      <span class="ti">Java</span><span class="sep">◆</span>
+      <span class="ti">Kotlin</span><span class="sep">◆</span>
+      <span class="ti hi">Firebase</span><span class="sep">◆</span>
+      <span class="ti">Node.js</span><span class="sep">◆</span>
+      <span class="ti">REST APIs</span><span class="sep">◆</span>
+      <span class="ti hi">Jetpack Compose</span><span class="sep">◆</span>
+      <span class="ti">HTML / CSS</span><span class="sep">◆</span>
+      <span class="ti">JavaScript</span><span class="sep">◆</span>
+      <span class="ti hi">Web Apps</span><span class="sep">◆</span>
+      <span class="ti">GitHub</span><span class="sep">◆</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section" style="padding-bottom:0">
+    <div class="section-inner">
+      <div class="stats-row reveal">
+        <div class="stat-box">
+          <div class="stat-num">2+</div>
+          <div class="stat-lbl">Years Exp</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">10+</div>
+          <div class="stat-lbl">Projects</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">5★</div>
+          <div class="stat-lbl">Rating</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3</div>
+          <div class="stat-lbl">Countries</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="section" id="services">
+    <div class="section-inner">
+      <div class="lbl reveal">What I Do</div>
+      <h2 class="heading reveal">Services</h2>
+      <div class="services-list reveal">
+        <div class="svc-card">
+          <div class="svc-top"><span class="svc-icon">📱</span><span class="svc-num">01</span></div>
+          <div class="svc-name">Android Development</div>
+          <div class="svc-desc">Native Android apps in Java &amp; Kotlin — from idea to Play Store. Clean architecture,
+            smooth UI, real performance.</div>
+          <div class="svc-price">From $300</div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-top"><span class="svc-icon">🌐</span><span class="svc-num">02</span></div>
+          <div class="svc-name">Web App Development</div>
+          <div class="svc-desc">Custom dashboards, portals, and platforms. Firebase backend, responsive design,
+            production-ready deployment.</div>
+          <div class="svc-price">From $400</div>
+        </div>
+        <div class="svc-card">
+          <div class="svc-top"><span class="svc-icon">🔗</span><span class="svc-num">03</span></div>
+          <div class="svc-name">API &amp; Backend Integration</div>
+          <div class="svc-desc">Connect your app to any service — payment gateways, APIs, Node.js/Express backends,
+            Firestore realtime DB.</div>
+          <div class="svc-price">From $200</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="projects" style="padding-top:0">
+    <div class="section-inner">
+      <div class="lbl reveal">Portfolio</div>
+      <h2 class="heading reveal">Selected Work</h2>
+
+      <div class="projects-list">
+
+        <div class="proj-card featured reveal">
+          <div class="proj-badge">⭐ Featured · Web App · Australia</div>
+          <div class="proj-name">Arcline Analytics Dashboard</div>
+          <p class="proj-desc">Full-stack analytics platform for an AI receptionist company. Multi-page dashboard with
+            call analytics, payment tracking, and admin panels. Integrated with Retell AI, Firebase Firestore, and
+            Node.js/Express backend.</p>
+          <div class="proj-tags">
+            <span class="tag hi">Firebase</span>
+            <span class="tag hi">Node.js</span>
+            <span class="tag hi">Retell AI</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">Firestore</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Admin Panel</span>
+          </div>
+        </div>
+        <div class="proj-card featured reveal">
+          <div class="proj-badge">⭐ Web App · USA · Tree Service</div>
+          <div class="proj-name">Olympic Yard Works — Staff Portal</div>
+          <p class="proj-desc">Custom staff portal for a US-based tree service company. Features a dynamic quoting
+            calculator with real pricing formulas, service breakdowns, and Square API payment integration.</p>
+          <div class="proj-tags">
+            <span class="tag hi">Square API</span>
+            <span class="tag hi">JavaScript</span>
+            <span class="tag">Quoting Calculator</span>
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">Staff Portal</span>
+            <span class="tag">Payment Integration</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-badge">Android · Jetpack Compose · Kotlin</div>
+          <div class="proj-name">WhatsApp Clone</div>
+          <p class="proj-desc">Full WhatsApp UI replica with Jetpack Compose — declarative UI, real-time chat screens,
+            Firebase integration, and custom Material 3 components.</p>
+          <div class="proj-tags">
+            <span class="tag hi">Jetpack Compose</span>
+            <span class="tag hi">Firebase</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">Realtime DB</span>
+            <span class="tag">Material 3</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-badge">Android · Java</div>
+          <div class="proj-name">EchoBeat Music Player</div>
+          <p class="proj-desc">Feature-rich Android music player with custom UI, playlist management, equalizer, and
+            smooth MediaPlayer controls.</p>
+          <div class="proj-tags">
+            <span class="tag hi">Java</span>
+            <span class="tag">MediaPlayer API</span>
+            <span class="tag">Material Design</span>
+            <span class="tag">Android SDK</span>
+          </div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-badge">Android · Java</div>
+          <div class="proj-name">PlayX Video Player</div>
+          <p class="proj-desc">Android video player with gesture controls, multiple format support, and ExoPlayer
+            integration for optimized high-quality playback.</p>
+          <div class="proj-tags">
+            <span class="tag hi">Java</span>
+            <span class="tag">ExoPlayer</span>
+            <span class="tag">Gestures</span>
+            <span class="tag">Android SDK</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- STACK -->
+  <div class="stack-bg" id="stack">
+    <div class="section">
+      <div class="section-inner">
+        <div class="lbl reveal">Technologies</div>
+        <h2 class="heading reveal">My Stack</h2>
+        <div class="stack-grid reveal">
+          <div class="stack-item"><span class="s-emoji">☕</span><span class="s-name">Java</span></div>
+          <div class="stack-item"><span class="s-emoji">🎯</span><span class="s-name">Kotlin</span></div>
+          <div class="stack-item"><span class="s-emoji">🚀</span><span class="s-name">Jetpack Compose</span></div>
+          <div class="stack-item"><span class="s-emoji">🔥</span><span class="s-name">Firebase</span></div>
+          <div class="stack-item"><span class="s-emoji">🟢</span><span class="s-name">Node.js</span></div>
+          <div class="stack-item"><span class="s-emoji">🌐</span><span class="s-name">HTML / CSS</span></div>
+          <div class="stack-item"><span class="s-emoji">⚡</span><span class="s-name">JavaScript</span></div>
+          <div class="stack-item"><span class="s-emoji">🗄️</span><span class="s-name">Firestore</span></div>
+          <div class="stack-item"><span class="s-emoji">🔗</span><span class="s-name">REST APIs</span></div>
+          <div class="stack-item"><span class="s-emoji">🐙</span><span class="s-name">Git / GitHub</span></div>
+          <div class="stack-item"><span class="s-emoji">▲</span><span class="s-name">Vercel / Netlify</span></div>
+          <div class="stack-item"><span class="s-emoji">📦</span><span class="s-name">Android Studio</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="contact-bg" id="contact">
+    <div class="contact-inner reveal">
+      <h2 class="contact-title">Let's Build<br>Something.</h2>
+      <p class="contact-sub">Available for freelance, contract &amp; full-time roles.<br>Quick response guaranteed.</p>
+      <div class="contact-links">
+        <a class="c-link" href="tel:+923106775830">📱 Whatsapp <span class="c-arrow">→</span></a>
+        <a class="c-link" href="mailto:alihassanshafaqat@gmail.com">📧 Email Me <span class="c-arrow">→</span></a>
+        <a class="c-link" href="https://github.com/alihassanshafaqat" target="_blank">🐙 GitHub <span
+            class="c-arrow">→</span></a>
+        <a class="c-link" href="https://profess0r.carrd.co" target="_blank">🌐 Portfolio <span
+            class="c-arrow">→</span></a>
+        <a class="c-link" href="https://www.linkedin.com/in/alihassanshafaqat" target="_blank">💼 LinkedIn <span
+            class="c-arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Ali Hassan Shafaqat</p>
+    <p>Pakistan 🇵🇰 · Available Worldwide</p>
+  </footer>
+
+  <script>
+    const els = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('on'), i * 70);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(el => obs.observe(el));
+  </script>
+
+</body>
+
+</html>
